@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { FaFacebook, FaGithub } from "react-icons/fa"
+
 
 
 const NavBar = () => {
+
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
@@ -56,6 +60,7 @@ const NavBar = () => {
                         <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400' to='/register'>Sign up</Link>
 
                     </li>
+
                 </ul>
                 <div class="ml-auto lg:hidden">
                     <button
@@ -156,6 +161,6 @@ const NavBar = () => {
             </div>
         </div>
     );
-};
+}
 
 export default NavBar;

@@ -6,7 +6,7 @@ const Home = () => {
         <div className='flex container mx-auto justify-around items-center'>
             <div className='w-[700px] space-y-8'>
                 <h1 className='font-bold text-5xl text-gray-800'>Learning Bee</h1>
-                <p className='font-thin text-3xl text-gray-800 m-10'>We are providing best courses to build you you as a succesfull front end web developer.Let's explore our all courses</p>
+                <p className='font-thin text-3xl text-gray-800'>We are providing best courses to build you you as a succesfull front end web developer.Let's explore our all courses</p>
                 <div>
                     <Link className='bg-yellow-600 text-2xl font-semibold py-3 px-4 rounded-lg' to='/courses'>Sneak a peek</Link>
                 </div>

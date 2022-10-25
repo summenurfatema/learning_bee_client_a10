@@ -11,8 +11,8 @@ const Course = () => {
     }, [])
 
     return (
-        <div>
-            <p className='text-4xl'>{allCourse.length}</p>
+        <div className='grid grid-cols-2 gap-5'>
+
             {
                 allCourse.map(course => <CourseCard
                     key={course.id}

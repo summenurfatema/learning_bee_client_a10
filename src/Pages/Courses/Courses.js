@@ -1,18 +1,21 @@
-import React from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+
+import { useLoaderData } from 'react-router-dom';
 import Course from '../Course/Course';
 
 const Courses = () => {
     const courses = useLoaderData()
-    console.log(courses)
+
     return (
-        <div>
-            {
-                courses.map(course => <p
-                    key={course.id}
-                ><Link to={`${course.id}`}>{course.name}</Link> </p>)
-            }
-            <Course></Course>
+        <div className='flex justify-between'>
+            <div className='pl-12'>
+                <h2 className='pb-2 border-b-2 mb-5 font-bold text-2xl'>Our Courses</h2>
+                {
+                    courses.map(course => <p className='text-xl font-semibold'
+                        key={course.id}>{course.name}
+                    </p>)
+                }
+            </div>
+            <div><Course></Course></div>
         </div>
     );
 };
