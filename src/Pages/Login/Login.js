@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/UserContext';
 
 const Login = () => {
 
-    const { signIn, signInWithGoogle } = useContext(AuthContext)
+    const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext)
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -28,6 +28,14 @@ const Login = () => {
             .then(result => {
                 const user = result.user
             })
+
+    }
+    const handleGithubSignIn = () => {
+        signInWithGithub()
+            .then(result => {
+                const user = result.user
+            })
+
     }
 
     return (
@@ -63,7 +71,7 @@ const Login = () => {
                         <h1 className='text-xl font-semibold text-white pr-16'>Sign in with Google</h1>
                     </div>
 
-                    <div className='flex bg-blue-700 items-center justify-between'>
+                    <div onClick={handleGithubSignIn} className='flex bg-blue-700 items-center justify-between'>
                         <img className='w-12 h-12 mr-12 p-1 rounded-full' src='https://img.freepik.com/free-icon/github-cat-circle_318-41747.jpg?size=338&ext=jpg&uid=R69870244&ga=GA1.2.821203553.1657130385&semt=sph' alt='github' />
                         <h1 className='text-xl font-semibold text-white pr-16'>Sign in with Github</h1>
                     </div>
