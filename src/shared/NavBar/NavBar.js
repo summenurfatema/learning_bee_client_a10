@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { FaMoon, FaSun } from "react-icons/fa"
+import { FaMoon, FaSun, FaUser } from "react-icons/fa"
+import { AuthContext } from '../../context/UserContext';
 
 
 
 const NavBar = () => {
+    const { user, logOut } = useContext(AuthContext)
 
     const [open, setOpen] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,47 +29,62 @@ const NavBar = () => {
                         <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400' to='/blog'>Blog</Link>
                     </li>
                 </ul>
-                <a
+                <div
                     href="/"
                     aria-label="Company"
                     title="Company"
                     class="inline-flex items-center lg:mx-auto"
                 >
-                    <svg
-                        class="w-8 text-deep-purple-accent-400"
-                        viewBox="0 0 24 24"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeMiterlimit="10"
-                        stroke="currentColor"
-                        fill="none"
-                    >
-                        <rect x="3" y="1" width="7" height="12" />
-                        <rect x="3" y="17" width="7" height="6" />
-                        <rect x="14" y="1" width="7" height="6" />
-                        <rect x="14" y="11" width="7" height="12" />
-                    </svg>
+                    <img className='w-20 h-20' src='https://img.freepik.com/free-vector/bee_1308-18942.jpg?w=360&t=st=1666705778~exp=1666706378~hmac=0bc9f88a12d7c9f4fdbc421dc0e74ae92dafc06b7e530a0165f4921add8c58a7' alt='logo' />
                     <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
                         Learning BEE
                     </span>
-                </a>
-                <ul class="flex items-center hidden ml-auto space-x-8 lg:flex">
-                    <li>
-                        <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400' to='/login'>Log in</Link>
-                    </li>
-                    <li>
-                        <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400' to='/register'>Sign up</Link>
+                </div>
+
+                {
+                    user?.uid ?
+                        <ul class="flex items-center hidden ml-auto space-x-8 lg:flex">
+                            <li>
+                                {
+                                    user?.photoURL ?
+
+                                        <img src={user.photoURL} alt='user' />
+
+                                        :
+                                        <FaUser />
+                                }
+                            </li>
+                            <li>
+                                <Link onClick={logOut} className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>Log out</Link>
+                            </li>
+                            <li onClick={() => setOpen(!open)}>
+                                {
+                                    open ? <FaMoon className='h-10 w-7 text-gray-7000' /> : <FaSun className='h-10 w-7 text-yellow-700' />
+                                }
+                            </li>
+                        </ul>
+
+                        :
+
+                        <ul class="flex items-center hidden ml-auto space-x-8 lg:flex">
+
+                            <li>
+
+                                <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400' to='/login'>Log in</Link>
+                            </li>
+                            <li>
+                                <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400' to='/register'>Sign up</Link>
 
 
-                    </li>
-                    <li onClick={() => setOpen(!open)}>
-                        {
-                            open ? <FaMoon className='h-10 w-7 text-gray-7000' /> : <FaSun className='h-10 w-7 text-yellow-700' />
-                        }
-                    </li>
+                            </li>
+                            <li onClick={() => setOpen(!open)}>
+                                {
+                                    open ? <FaMoon className='h-10 w-7 text-gray-7000' /> : <FaSun className='h-10 w-7 text-yellow-700' />
+                                }
+                            </li>
 
-                </ul>
+                        </ul>
+                }
                 <div class="ml-auto lg:hidden">
                     <button
                         aria-label="Open Menu"
@@ -95,31 +112,17 @@ const NavBar = () => {
                             <div class="p-5 bg-white border rounded shadow-sm">
                                 <div class="flex items-center justify-between mb-4">
                                     <div>
-                                        <a
+                                        <div
                                             href="/"
                                             aria-label="Company"
                                             title="Company"
                                             class="inline-flex items-center"
                                         >
-                                            <svg
-                                                class="w-8 text-deep-purple-accent-400"
-                                                viewBox="0 0 24 24"
-                                                strokeLinejoin="round"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeMiterlimit="10"
-                                                stroke="currentColor"
-                                                fill="none"
-                                            >
-                                                <rect x="3" y="1" width="7" height="12" />
-                                                <rect x="3" y="17" width="7" height="6" />
-                                                <rect x="14" y="1" width="7" height="6" />
-                                                <rect x="14" y="11" width="7" height="12" />
-                                            </svg>
+                                            <img className='w-20 h-20' src='https://img.freepik.com/free-vector/bee_1308-18942.jpg?w=360&t=st=1666705778~exp=1666706378~hmac=0bc9f88a12d7c9f4fdbc421dc0e74ae92dafc06b7e530a0165f4921add8c58a7' alt='logo' />
                                             <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
                                                 Learning BEE
                                             </span>
-                                        </a>
+                                        </div>
                                     </div>
                                     <div>
                                         <button

@@ -19,7 +19,7 @@ const Register = () => {
 
     }
     return (
-        <div className='flex justify-center items-center mt-16'>
+        <div className='flex justify-center items-center my-16'>
             <div class="flex flex-col items-center space-y-3 shadow-lg bg-zinc-200 w-[600px] p-10">
 
                 <h1 className='text-3xl font-bold mb-10'>Please Create an Account Here !!!</h1>

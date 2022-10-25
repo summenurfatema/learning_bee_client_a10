@@ -19,7 +19,7 @@ const CourseDetails = () => {
                     <p className='text-xl font-semibold'>Cost :<span className='text-2xl'>{cost}</span> $ Only</p>
                     <button className=' w-full block bg-yellow-400 py-2 px-3 rounded-lg mb-10 text-2xl font-semibold'>Buy Now</button>
 
-                    <button className='w-full'><Link className='px-[175px] text-2xl font-semibold bg-yellow-400 py-2 px-3 rounded-lg' to=''>Go Premiun</Link></button>
+                    <button className='w-full'><Link className=' [175px] text-2xl font-semibold bg-yellow-400 py-2 px-3 rounded-lg' to='/premium'>Go Premiun</Link></button>
                 </div>
             </div>
         </div>

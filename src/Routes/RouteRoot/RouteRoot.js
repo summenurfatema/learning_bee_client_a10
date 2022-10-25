@@ -9,8 +9,11 @@ import Login from "../../Pages/Login/Login";
 
 import Register from "../../Pages/Register/Register";
 import Blog from '../../Pages/Blog/Blog'
+import Error from "../../Pages/Blog/Error/Error";
 
 import CourseDetails from "../../Pages/CourseDetails/CourseDetails";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Premium from "../../Pages/Premium/Premium";
 
 export const router = createBrowserRouter([
     {
@@ -45,11 +48,19 @@ export const router = createBrowserRouter([
                 element: <FAQ></FAQ>
             },
             {
+                path: '*',
+                element: <Error></Error>
+            },
+            {
                 path: '/blog',
 
                 element: <Blog></Blog>
             },
 
+            {
+                path: '/premium',
+                element: <PrivateRoute><Premium></Premium></PrivateRoute>
+            },
             {
                 path: '/login',
                 element: <Login></Login>
