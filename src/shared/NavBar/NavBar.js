@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { FaFacebook, FaGithub } from "react-icons/fa"
+import { FaMoon, FaSun } from "react-icons/fa"
 
 
 
 const NavBar = () => {
 
-
+    const [open, setOpen] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
@@ -59,6 +59,12 @@ const NavBar = () => {
                     <li>
                         <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400' to='/register'>Sign up</Link>
 
+
+                    </li>
+                    <li onClick={() => setOpen(!open)}>
+                        {
+                            open ? <FaMoon className='h-10 w-7 text-gray-7000' /> : <FaSun className='h-10 w-7 text-yellow-700' />
+                        }
                     </li>
 
                 </ul>
