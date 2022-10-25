@@ -27,7 +27,7 @@ const CourseDetails = () => {
                         <p className='text-xl font-semibold'>Cost :<span className='text-3xl'>{cost}</span> $ Only</p>
                         <button className=' w-full block bg-yellow-400 py-2 px-3 rounded-lg mb-10 text-2xl font-semibold'>Buy Now</button>
 
-                        <button className='w-full'><Link className='px-[171px] text-2xl font-semibold bg-yellow-400 py-2 rounded-lg' to='/premium'>Go Premium</Link></button>
+                        <button className='w-full'><Link className='px-[171px] text-2xl font-semibold bg-yellow-400 py-2 rounded-lg' to={`/premium/${data.id}`}>Go Premium</Link></button>
                     </div>
                 </div>
             </div>

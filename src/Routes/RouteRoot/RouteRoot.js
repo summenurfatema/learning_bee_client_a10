@@ -14,6 +14,7 @@ import Error from "../../Pages/Blog/Error/Error";
 import CourseDetails from "../../Pages/CourseDetails/CourseDetails";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Premium from "../../Pages/Premium/Premium";
+import PremiumCard from "../../Pages/PremiunCard/PremiumCard";
 
 export const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
                 path: '/course-info/:id',
                 loader: ({ params }) => fetch(`http://localhost:5000/course-info/${params.id}`),
                 element: <CourseDetails></CourseDetails>
+            }, {
+                path: '/premium/:id',
+                loader: ({ params }) => fetch(`http://localhost:5000/course-info/${params.id}`),
+                element: <PremiumCard></PremiumCard>
             },
 
 
