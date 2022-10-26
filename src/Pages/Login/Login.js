@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/UserContext';
 
 
 const Login = () => {
-
+    const [success, setSuccess] = useState(null)
     const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext)
 
     const handleSubmit = (event) => {
@@ -14,10 +14,13 @@ const Login = () => {
         const password = form.password.value
         console.log(email, password)
 
+
         signIn(email, password)
             .then(result => {
                 const user = result.user;
+                form.reset('')
                 console.log(user)
+                setSuccess('Login Successfully !!!')
             })
             .catch(error => console.error(error))
 
@@ -50,16 +53,18 @@ const Login = () => {
                     <label class="text-xl" htmlFor="email">Email address</label>
                     <input
                         class="px-3 py-2 rounded-lg shadow-sm border  border-gray-300 w-full focus:outline-none focus:border-yellow-600 focus:ring-1 focus:ring-yellow-800"
-                        type="text" name="email" id="" />
+                        type="text" name="email" id="" required />
 
 
 
                     <label class="text-xl" htmlFor="password">Password</label>
                     <input
                         class=" px-3 py-2 rounded-lg shadow-sm border  border-gray-300 w-full focus:outline-none focus:border-yellow-800 focus:ring-1 focus:ring-yellow-800"
-                        type="password" name="password" id="" />
+                        type="password" name="password" id="" required />
 
                     <p className='text-xl text-blue-700 hover:underline'>Forget password?</p>
+
+                    <p className='text-green-700 text-xl font-bold'>{success}</p>
 
                     <button class="font-semibold text-xl text-white py-2 rounded-md bg-yellow-800 w-full">Log in</button>
                     <p className='text-xl'>Don't have any account? <Link className='text-xl text-blue-700 hover:underline' to='/register'>Register here</Link></p>
