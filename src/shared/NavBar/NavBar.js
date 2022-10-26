@@ -48,7 +48,7 @@ const NavBar = () => {
                                 {
                                     user?.photoURL ?
 
-                                        <img src={user.photoURL} alt='user' />
+                                        <img className='w-12 h-12 rounded-full' title={user.displayName} src={user.photoURL} alt='user' />
 
                                         :
                                         <FaUser />

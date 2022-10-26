@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Courses from "../../Pages/Courses/Courses";
 import FAQ from "../../Pages/FAQ/FAQ";
-import CourseCard from "../../shared/CourseCard/CourseCard";
+
 import Main from "../../layout/Main";
 
 import Home from "../../Pages/Home/Home";
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
             }, {
                 path: '/premium/:id',
                 loader: ({ params }) => fetch(`http://localhost:5000/course-info/${params.id}`),
-                element: <PremiumCard></PremiumCard>
+                element: <PrivateRoute><Premium></Premium></PrivateRoute>
             },
 
 

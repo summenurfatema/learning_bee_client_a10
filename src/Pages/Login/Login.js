@@ -1,11 +1,16 @@
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/UserContext';
 
 
 const Login = () => {
     const [success, setSuccess] = useState(null)
     const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const from = location.state?.from?.pathname || '/'
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -21,23 +26,32 @@ const Login = () => {
                 form.reset('')
                 console.log(user)
                 setSuccess('Login Successfully !!!')
+                navigate(from, { replace: true });
             })
             .catch(error => console.error(error))
 
 
     }
+    const googleProvider = new GoogleAuthProvider()
+    const githubProvider = new GithubAuthProvider()
+
     const handleGoogleSignIn = () => {
-        signInWithGoogle()
+        signInWithGoogle(googleProvider)
             .then(result => {
                 const user = result.user
+                console.log(user)
             })
+            .catch(error => console.log(error))
 
     }
     const handleGithubSignIn = () => {
-        signInWithGithub()
+        signInWithGithub(githubProvider)
             .then(result => {
                 const user = result.user
+                console.log(user)
             })
+            .catch(error => console.log(error))
+
 
     }
 
