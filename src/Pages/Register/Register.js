@@ -1,15 +1,30 @@
 import React, { useContext } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/UserContext';
 
 const Register = () => {
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+
     const { createUser } = useContext(AuthContext)
     const handleSubmit = (event) => {
         event.preventDefault()
         const form = event.target
         const email = form.email.value
         const password = form.password.value
+        const confirm = form.confirm.value
         console.log(email, password)
+
+        if (password.length < 6) {
+            setError('Please enter at least 6 characters !!')
+            return;
+        }
+        if (password !== confirm) {
+            setError('Please enter correct password !!')
+            return;
+        }
+        else { setSuccess('Registered Successfully !!!') }
         createUser(email, password)
             .then(result => {
                 const user = result.user;
@@ -30,29 +45,30 @@ const Register = () => {
 
                     <input
                         class="px-3 py-2 rounded-lg shadow-sm border  border-gray-300 w-full focus:outline-none focus:border-yellow-600 focus:ring-1 focus:ring-yellow-800"
-                        type="text" name="name" id="" />
+                        type="text" name="name" id="" required />
 
 
 
                     <label class="text-xl" htmlFor="email">Email address</label>
                     <input
                         class="px-3 py-2 rounded-lg shadow-sm border  border-gray-300 w-full focus:outline-none focus:border-yellow-600 focus:ring-1 focus:ring-yellow-800"
-                        type="text" name="email" id="" />
+                        type="text" name="email" id="" required />
 
 
 
                     <label class="text-xl" htmlFor="password">Password</label>
                     <input
                         class=" px-3 py-2 rounded-lg shadow-sm border  border-gray-300 w-full focus:outline-none focus:border-yellow-800 focus:ring-1 focus:ring-yellow-800"
-                        type="password" name="password" id="" />
+                        type="password" name="password" id="" required />
 
 
                     <label class="text-xl" htmlFor="password">Confirm Password</label>
                     <input
                         class=" px-3 py-2 rounded-lg shadow-sm border  border-gray-300 w-full focus:outline-none focus:border-yellow-800 focus:ring-1 focus:ring-yellow-800"
-                        type="password" name="confirm" id="" />
+                        type="password" name="confirm" id="" required />
 
-
+                    <p className='text-red-600 font-semibold text-xl'>{error}</p>
+                    <p className='text-green-600 font-semibold text-xl'>{success}</p>
                     <div class="flex items-center space-x-2">
 
                         <div>
