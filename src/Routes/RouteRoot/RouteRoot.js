@@ -13,7 +13,7 @@ import Error from "../../Pages/Blog/Error/Error";
 
 import CourseDetails from "../../Pages/CourseDetails/CourseDetails";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
-import Premium from "../../Pages/Premium/Premium";
+
 import PremiumCard from "../../Pages/PremiunCard/PremiumCard";
 
 export const router = createBrowserRouter([
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
             }, {
                 path: '/premium/:id',
                 loader: ({ params }) => fetch(`http://localhost:5000/course-info/${params.id}`),
-                element: <PrivateRoute><Premium></Premium></PrivateRoute>
+                element: <PrivateRoute><PremiumCard></PremiumCard></PrivateRoute>
             },
 
 
@@ -62,10 +62,7 @@ export const router = createBrowserRouter([
                 element: <Blog></Blog>
             },
 
-            {
-                path: '/premium',
-                element: <PrivateRoute><Premium></Premium></PrivateRoute>
-            },
+
             {
                 path: '/login',
                 element: <Login></Login>

@@ -17,16 +17,16 @@ const NavBar = () => {
             <div class="relative flex grid items-center grid-cols-2 lg:grid-cols-3">
                 <ul class="flex items-center hidden space-x-8 lg:flex">
                     <li>
-                        <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400' to='/home'>Home</Link>
+                        <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-yellow-accent-700' to='/home'>Home</Link>
                     </li>
                     <li>
-                        <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400' to='/courses'>Courses</Link>
+                        <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-yellow-accent-700' to='/courses'>Courses</Link>
                     </li>
                     <li>
-                        <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400' to='/faq'>FAQ</Link>
+                        <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-yellow-accent-700' to='/faq'>FAQ</Link>
                     </li>
                     <li>
-                        <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400' to='/blog'>Blog</Link>
+                        <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-yellow-accent-700' to='/blog'>Blog</Link>
                     </li>
                 </ul>
                 <div
@@ -55,7 +55,7 @@ const NavBar = () => {
                                 }
                             </li>
                             <li>
-                                <Link onClick={logOut} className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>Log out</Link>
+                                <Link onClick={logOut} className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-yellow-accent-700'>Log out</Link>
                             </li>
                             <li onClick={() => setOpen(!open)}>
                                 {
@@ -70,10 +70,10 @@ const NavBar = () => {
 
                             <li>
 
-                                <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400' to='/login'>Log in</Link>
+                                <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-yellow-accent-700' to='/login'>Log in</Link>
                             </li>
                             <li>
-                                <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400' to='/register'>Sign up</Link>
+                                <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-yellow-accent-700' to='/register'>Sign up</Link>
 
 
                             </li>
@@ -143,25 +143,67 @@ const NavBar = () => {
                                 <nav>
                                     <ul class="space-y-4">
                                         <li>
-                                            <Link class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400" to='/home'>Home</Link>
+                                            <Link class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-yellow-accent-700" to='/home'>Home</Link>
                                         </li>
                                         <li>
-                                            <Link class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400" to='/courses'>Courses</Link>
+                                            <Link class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-yellow-accent-700" to='/courses'>Courses</Link>
                                         </li>
                                         <li>
-                                            <Link class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400" to='/faq'>faq</Link>
+                                            <Link class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-yellow-accent-700" to='/faq'>FAQ</Link>
                                         </li>
                                         <li>
-                                            <Link class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400" to='/blog'>Blog</Link>
+                                            <Link class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-yellow-accent-700" to='/blog'>Blog</Link>
                                         </li>
+
                                         <li>
-                                            <Link class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none" to='/login'>Login</Link>
-                                        </li>
-                                        <li>
-                                            <Link class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none" to='/register'>Sign up</Link>
+                                            {
+                                                user?.uid ?
+
+                                                    <ul class="space-y-4">
+                                                        <li>
+                                                            {
+                                                                user?.photoURL ?
+
+                                                                    <img className='w-12 h-12 rounded-full' title={user.displayName} src={user.photoURL} alt='user' />
+
+                                                                    :
+                                                                    <FaUser />
+                                                            }
+                                                        </li>
+                                                        <li>
+                                                            <Link onClick={logOut} className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-yellow-accent-700'>Log out</Link>
+                                                        </li>
+                                                        <li onClick={() => setOpen(!open)}>
+                                                            {
+                                                                open ? <FaMoon className='h-10 w-7 text-gray-7000' /> : <FaSun className='h-10 w-7 text-yellow-700' />
+                                                            }
+                                                        </li>
+                                                    </ul>
+                                                    :
+                                                    <ul class="space-y-3">
+
+                                                        <li>
+
+                                                            <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-yellow-accent-700' to='/login'>Log in</Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-yellow-accent-700' to='/register'>Sign up</Link>
+
+
+                                                        </li>
+                                                        <li onClick={() => setOpen(!open)}>
+                                                            {
+                                                                open ? <FaMoon className='h-10 w-7 text-gray-7000' /> : <FaSun className='h-10 w-7 text-yellow-700' />
+                                                            }
+                                                        </li>
+
+                                                    </ul>
+
+                                            }
                                         </li>
 
                                     </ul>
+
                                 </nav>
                             </div>
                         </div>

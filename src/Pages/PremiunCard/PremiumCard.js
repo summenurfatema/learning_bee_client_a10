@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaCrown, FaCheckSquare } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
-import LeftSide from '../../shared/LeftSide/LeftSide';
+
 
 const PremiumCard = () => {
     const premium = useLoaderData()

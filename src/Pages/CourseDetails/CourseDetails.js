@@ -12,7 +12,7 @@ const CourseDetails = () => {
     console.log(data)
     const { image_url, mentor, title, details, cost, students, rating } = data;
     return (
-        <div className='flex justify-evenly'>
+        <div className='flex flex-col md:flex-row md:justify-evenly'>
             <LeftSide></LeftSide>
             <div className='flex justify-center items-center container  mx-auto my-10'>
 
@@ -27,7 +27,7 @@ const CourseDetails = () => {
                         <p className='text-xl font-semibold'>Cost :<span className='text-3xl'>{cost}</span> $ Only</p>
                         <button className=' w-full block bg-yellow-400 py-2 px-3 rounded-lg mb-10 text-2xl font-semibold'>Buy Now</button>
 
-                        <button className='w-full'><Link className='px-[171px] text-2xl font-semibold bg-yellow-400 py-2 rounded-lg' to={`/premium/${data.id}`}>Go Premium</Link></button>
+                        <button className='w-full'><Link className='px-[107px] sm:px-[130px] md:px-[171px] text-2xl font-semibold bg-yellow-400 py-2 rounded-lg' to={`/premium/${data.id}`}>Go Premium</Link></button>
                     </div>
                 </div>
             </div>
