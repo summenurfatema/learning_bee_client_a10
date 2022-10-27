@@ -77,8 +77,8 @@ const Register = () => {
                         </div>
 
                         <div>
-                            <p className='text-xl'>I agree to the <a href="#" className="text-blue-600 pt-3 hover:underline"> Terms </a>
-                                and <a href="#" class="text-blue-600 hover:underline">Privacy Policy</a>
+                            <p className='text-xl'>I agree to the <Link href="" clLinkssName="text-blue-600 pt-3 hover:underline"> Terms </Link>
+                                and <Link href="#" class="text-blue-600 hover:underline">Privacy Policy</Link>
                             </p>
                         </div>
 
