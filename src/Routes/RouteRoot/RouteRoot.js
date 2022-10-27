@@ -33,16 +33,16 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/courses',
-                loader: () => fetch('http://localhost:5000/courses'),
+                loader: () => fetch('https://learning-bee-server-wine.vercel.app/courses'),
                 element: <Courses></Courses>
             },
             {
                 path: '/course-info/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/course-info/${params.id}`),
+                loader: ({ params }) => fetch(`https://learning-bee-server-wine.vercel.app/course-info/${params.id}`),
                 element: <CourseDetails></CourseDetails>
             }, {
                 path: '/premium/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/course-info/${params.id}`),
+                loader: ({ params }) => fetch(`https://learning-bee-server-wine.vercel.app/course-info/${params.id}`),
                 element: <PrivateRoute><PremiumCard></PremiumCard></PrivateRoute>
             },
 

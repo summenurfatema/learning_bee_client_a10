@@ -5,7 +5,7 @@ const Course = () => {
     const [allCourse, setAllCourse] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/course-info')
+        fetch('https://learning-bee-server-wine.vercel.app/course-info')
             .then(res => res.json())
             .then(data => setAllCourse(data))
     }, [])

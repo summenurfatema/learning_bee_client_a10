@@ -1,6 +1,7 @@
 # Learning BEE
-## Live site :
-## server's depoyed link :
+
+## Live site : https://eloquent-elf-d6f868.netlify.app
+
 
 # In this project
 - I have used kitwind.io's components.
